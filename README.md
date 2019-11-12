@@ -8,14 +8,14 @@ classification steps:
 attach labels to data and split into test and data files using create_partitions.py
 for example:
 
-create_partitions.py -o output -f MSD_JMIR_SPECTRAL_ALL_All.arff -l LabelsTopMAGD -s TrainingSplitsTopMAGD
+create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
 
 -f denotes the .arff file containing data features
 -l denotes the file mapping the data entries to the correct labels
 -s denotes whether a data entry will fall into testing or training data
 -o is the directory where the result will be stored
 
-all of these file can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
+all of these files can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
 
 
 

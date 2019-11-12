@@ -5,8 +5,8 @@ import matplotlib.pylab as plt
 import dataRead
 
 
-test_file = ".\\output\\test.arff"
-train_file = ".\\output\\train.arff"
+test_file = ".\\out\\test.arff"
+train_file = ".\\out\\train.arff"
 classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electronic", "Folk", "Rap", "Vocal", "Latin", "Blues", "International"]
 
 

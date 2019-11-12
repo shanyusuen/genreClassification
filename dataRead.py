@@ -21,7 +21,7 @@ def load_data(arff_file):
     return data
 
 
-#remove_spaces_from_labels('LabelsTopMAGD')
+
 def remove_spaces_from_labels(file):
     old = open(file, 'r')
     lines = []
@@ -30,14 +30,15 @@ def remove_spaces_from_labels(file):
         lines.append(line.replace('New Age', 'New_Age'))
     open(file, 'w').write(''.join(lines))
 
+remove_spaces_from_labels('labelsTopMAGD')
 
-
+"""
 if __name__ == "__main__":
     data_file = ".\\out\\msd-rh_msd-topMAGD-genreAssignment.arff"
     d = load_data(data_file)
     print(d.shape)
 
-
+"""
 
 
 
