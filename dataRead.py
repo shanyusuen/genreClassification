@@ -13,21 +13,31 @@ import pprint
 import codecs
 import numpy as np
 
-data_file = ".\\out\\msd-rh_msd-topMAGD-genreAssignment.arff"
 
 def load_data(arff_file):
-    #file_ = codecs.open(data_file, 'rb', 'utf-8')
-    dataset = arff.load(arff_file)
-    #data = dataset['data']
-    #decoder = arff.ArffDecoder()
-    #d = decoder.decode(file_, encode_nominal=True)
-    #pprint.pprint(d)
-    data = np.array(list(dataset))
+    fp = open(arff_file)
+    dataset = arff.load(fp)
+    data = np.array(list(dataset['data']))
     return data
 
 
-#print(data)
+#remove_spaces_from_labels('LabelsTopMAGD')
+def remove_spaces_from_labels(file):
+    old = open(file, 'r')
+    lines = []
+    for line in old:
+        line.replace('New Age', 'New_Age')
+        lines.append(line.replace('New Age', 'New_Age'))
+    open(file, 'w').write(''.join(lines))
+
+
 
 if __name__ == "__main__":
+    data_file = ".\\out\\msd-rh_msd-topMAGD-genreAssignment.arff"
     d = load_data(data_file)
     print(d.shape)
+
+
+
+
+

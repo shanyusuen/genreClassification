@@ -4,31 +4,42 @@ from keras.models import Sequential
 import matplotlib.pylab as plt
 import dataRead
 
+
+test_file = ".\\output\\test.arff"
+train_file = ".\\output\\train.arff"
+classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electronic", "Folk", "Rap", "Vocal", "Latin", "Blues", "International"]
+
+
 batch_size = 256
-num_classes = 13
 epochs = 10
 
-dimension = 60
 
-data_set = dataRead.load_data(dataRead.data_file)
 
-classes = ["'Pop_Rock'", "'New Age'", "'Jazz'", "'RnB'", "'Country'", "'Reggae'", "'Electronic'", "'Folk'", "'Rap'", "'Vocal'", "'Latin'", "'Blues'", "'International'"]
+test_data = dataRead.load_data(test_file)
+train_data = dataRead.load_data(train_file)
+
+
+
+#last dimension is label
+num_dimensions = test_data.shape[1] - 1
+num_classes = len(classes)
+
 transform = lambda x: classes.index(x)
 
-x_train = data_set[0:360000, 0:60]
-y_train = data_set[0:360000, 60]
+x_train = test_data[:, :-1]
+y_train = test_data[:, -1:]
 
-x_test = data_set[360000:, 0:60]
-y_test = data_set[360000:, 60]
+x_test = test_data[:, :-1]
+y_test = test_data[:, -1:]
 
 y_train = keras.utils.to_categorical([transform(x) for x in y_train], num_classes)
 y_test = keras.utils.to_categorical([transform(x) for x in y_test], num_classes)
 
 model = Sequential()
-model.add(Dense(60, input_dim=60, activation='relu'))
+model.add(Dense(num_dimensions, input_dim=num_dimensions, activation='relu'))
 model.add(Dense(45, activation='relu'))
 model.add(Dense(45, activation='relu'))
-model.add(Dense(13, activation='softmax'))
+model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adam(),
