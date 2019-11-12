@@ -1,6 +1,12 @@
 # genreClassification
 Repo #2 for CS4641
 
+Results:
+
+____________________________________________________________
+JMIR Low Level Spectral Data
+TopMAGD labels, 80% Testing split           Accuracy: 67.7%
+____________________________________________________________
 
 classification steps:
 
