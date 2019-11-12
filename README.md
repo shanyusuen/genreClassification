@@ -1,15 +1,13 @@
 # genreClassification
 Repo #2 for CS4641
 
-Results:
+##Results:
 
-____________________________________________________________
-JMIR Low Level Spectral Data
-TopMAGD labels, 80% Testing split           Accuracy: 67.7%
-____________________________________________________________
+JMIR Low Level Spectral Data                Accuracy: 57.7%
+    -TopMAGD labels, 80% Testing split           
 
-classification steps:
 
+##Using the Classifier
 
 attach labels to data and split into test and data files using create_partitions.py
 for example:
