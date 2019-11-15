@@ -1,7 +1,6 @@
 import keras
 from keras.layers import Dense, Flatten
 from keras.models import Sequential
-import matplotlib.pylab as plt
 import dataRead
 import data_plotting
 
@@ -12,7 +11,7 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electroni
 
 
 batch_size = 256
-epochs = 10
+epochs = 50
 
 
 
@@ -35,6 +34,7 @@ y_test = test_data[:, -1:]
 
 y_train = keras.utils.to_categorical([transform(x) for x in y_train], num_classes)
 y_test = keras.utils.to_categorical([transform(x) for x in y_test], num_classes)
+
 
 model = Sequential()
 model.add(Dense(num_dimensions, input_dim=num_dimensions, activation='relu'))

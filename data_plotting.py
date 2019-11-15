@@ -33,12 +33,12 @@ def plotHistory(test_accuracy, training_accuracy, test_loss, training_loss):
 
 
 def plotConfusion(model, classes, test_x, test_y):
-    # test labels can not be one hot encoded
-    test_y = np.argmax(test_y, 1)
+    # test labels can not be one hot encoded, assign indexes
+    #test_y = np.argmax(test_y, 1)
+    test_y = np.argmax(test_y, axis=1)
+    pred_y = model.predict_classes(test_x)
 
-    y_pred = model.predict_classes(test_x)
-    con_mat = tf.math.confusion_matrix(labels=test_y, predictions=y_pred).numpy()
-
+    con_mat = tf.math.confusion_matrix(labels=test_y, predictions=pred_y).numpy()
     con_mat_norm = np.around(con_mat.astype('float') / con_mat.sum(axis=1)[:, np.newaxis], decimals=2)
 
     """
@@ -47,8 +47,8 @@ def plotConfusion(model, classes, test_x, test_y):
                               columns=classes)
     """
     figure = plt.figure(figsize=(8, 8))
-    #sns.heatmap(con_mat_df, annot=True, cmap=plt.cm.Blues)
-    sns.heatmap(con_mat, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
+    #sns.heatmap(con_mat, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
+    sns.heatmap(con_mat_norm, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')

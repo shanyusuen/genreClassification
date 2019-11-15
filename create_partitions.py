@@ -73,7 +73,12 @@ if __name__ == '__main__':
             continue
 
         tmp = line.rstrip().split("\t")
-        split_mapping[tmp[0]] = tmp[1]
+        try:
+            split_mapping[tmp[0]] = tmp[1]
+        except:
+            print("failed to add: ", tmp)
+            print("continuing")
+
 
     split_file.close()
 
