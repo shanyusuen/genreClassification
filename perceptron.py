@@ -11,7 +11,7 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electroni
 
 
 batch_size = 256
-epochs = 10
+epochs = 100
 
 
 
@@ -74,6 +74,32 @@ def plotHistory(test_accuracy, training_accuracy, test_loss, training_loss):
 
     plt.show()
 
+import tensorflow as tf
+import numpy as np
+#import pandas as pd
+import seaborn as sns
+
+def plotConfusion(model, classes, test_x, test_y):
+    # test labels can not be one hot encoded
+    test_y = np.argmax(test_y, 1)
+
+    y_pred = model.predict_classes(test_x)
+    con_mat = tf.math.confusion_matrix(labels=test_y, predictions=y_pred).numpy()
+
+    con_mat_norm = np.around(con_mat.astype('float') / con_mat.sum(axis=1)[:, np.newaxis], decimals=2)
+
+    """
+    con_mat_df = pd.DataFrame(con_mat_norm,
+                              index=classes,
+                              columns=classes)
+    """
+    figure = plt.figure(figsize=(8, 8))
+    #sns.heatmap(con_mat_df, annot=True, cmap=plt.cm.Blues)
+    sns.heatmap(con_mat, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.show()
 
 callback = keras.callbacks.callbacks.History()
 
@@ -92,6 +118,8 @@ test_accuracy = callback.history['val_accuracy']
 training_loss = callback.history['loss']
 test_loss = callback.history['val_loss']
 
+plotConfusion(model, classes, x_test, y_test)
 plotHistory(test_accuracy, training_accuracy, test_loss, training_loss)
+
 
 
