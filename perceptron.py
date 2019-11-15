@@ -11,7 +11,7 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electroni
 
 
 batch_size = 256
-epochs = 10
+epochs = 100
 
 
 
