@@ -8,7 +8,7 @@ def plotHistory(test_accuracy, training_accuracy, test_loss, training_loss):
     yellow  = "#f4d03f"
     blue = "#5dade2"
 
-    fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2)
+    fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2, figsize=(7,7))
 
     # Accuracy
 
@@ -29,6 +29,7 @@ def plotHistory(test_accuracy, training_accuracy, test_loss, training_loss):
     ax3.plot(range(1, 1 + len(test_loss)), test_loss, color=yellow)
     ax3.set_xlabel('Epochs')
 
+    plt.tight_layout()
     plt.show()
 
 
@@ -49,7 +50,10 @@ def plotConfusion(model, classes, test_x, test_y):
     figure = plt.figure(figsize=(8, 8))
     #sns.heatmap(con_mat, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
     sns.heatmap(con_mat_norm, xticklabels=classes, yticklabels=classes, annot=True, fmt='g', cmap=plt.cm.Blues)
-    plt.tight_layout()
+    plt.title("Confusion Matrix")
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
+
+
+    plt.tight_layout()
     plt.show()
