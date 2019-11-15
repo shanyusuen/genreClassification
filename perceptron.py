@@ -11,7 +11,7 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electroni
 
 
 batch_size = 256
-epochs = 100
+epochs = 10
 
 
 
@@ -46,31 +46,52 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               metrics=['accuracy'])
 
 
-class AccuracyHistory(keras.callbacks.Callback):
-    def __init__(self):
-        self.acc = []
+def plotHistory(test_accuracy, training_accuracy, test_loss, training_loss):
 
-    def on_train_begin(self, logs={}):
-        self.acc = []
+    yellow  = "#f4d03f"
+    blue = "#5dade2"
 
-    def on_epoch_end(self, batch, logs={}):
-        self.acc.append(logs.get('acc'))
+    fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(2, 2)
+
+    # Accuracy
+
+    ax0.plot(range(1, 1 + len(training_accuracy)), training_accuracy, color=blue)
+    ax0.set_ylabel('Accuracy')
+    ax0.set_title("Training Data")
+
+    ax1.plot(range(1, 1 + len(test_accuracy)), test_accuracy, color=blue)
+    ax1.set_xlabel('Epochs')
+    ax1.set_title("Testing Data")
+
+    # Loss
+
+    ax2.plot(range(1, 1 + len(training_loss)), training_loss, color=yellow)
+    ax2.set_xlabel('Epochs')
+    ax2.set_ylabel('Loss')
+
+    ax3.plot(range(1, 1 + len(test_loss)), test_loss, color=yellow)
+    ax3.set_xlabel('Epochs')
+
+    plt.show()
 
 
-history = AccuracyHistory()
+callback = keras.callbacks.callbacks.History()
 
 model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
           validation_data=(x_test, y_test),
-          callbacks=[history])
+          callbacks=[callback])
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss: ', score[0])
 print('Test accuracy: ', score[1])
-print("Accuracies: ", history.acc)
-plt.plot(range(1, 11), history.acc)
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.show()
+training_accuracy = callback.history['accuracy']
+test_accuracy = callback.history['val_accuracy']
+training_loss = callback.history['loss']
+test_loss = callback.history['val_loss']
+
+plotHistory(test_accuracy, training_accuracy, test_loss, training_loss)
+
+

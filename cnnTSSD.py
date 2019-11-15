@@ -11,7 +11,7 @@ config.gpu_options.allow_growth = True
 session = tf.compat.v1.Session(config=config)
 
 batch_size = 2048
-epochs = 50
+epochs = 100
 
 categories = ["Pop_Rock", "New Age", "Jazz", "RnB", "Country",
               "Reggae", "Electronic", "Folk", "Rap", "Vocal", "Latin",
