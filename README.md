@@ -47,6 +47,7 @@ In addition, many of these datasets included a temporal dimension that could be 
 
 Describes sound modulation across 24 frequency bands.
 Images of rhythm pattern spectrograms
+![Rythm Patterns](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/rythmpatterns_comparison.PNG)
 
 #### Architecture
 
