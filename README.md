@@ -17,6 +17,8 @@ All of the models were created in Python 3.7 using the library Keras with the Te
 
 For each model below, hyperparameters were tuned manually until the model was seen to be overfitting the data. Specific parameters included the number of epochs, layer and kernel sizes, and number of layers. In general, hyperparameters were tuned such that the validation accuracy would be maximized.
 
+# Results
+
 ## Perceptrons and Neural Networks
 
 Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
@@ -58,9 +60,6 @@ Describes sound modulation across 24 frequency bands.
 The true label is on the y axis and the predicted label is on the x axis.
 ![Rhythm Pattern Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Confusion.png)
 
-
-# Results
-
 The models and architectures used for the extra features seen here can be found in Appendix B.
 
 
@@ -73,6 +72,8 @@ The models and architectures used for the extra features seen here can be found 
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
 
+
+# Conclusion
 
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
