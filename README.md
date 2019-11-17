@@ -16,6 +16,8 @@ All of the models were created in Python3.7 using the library Keras with the Ten
 
 For each model below, hyperparameters were tuned manually until the model was seen to be overfitting the data. Specific parameters included the number of epochs, layer and kernel sizes, and number of layers. In general, hyperparameters were tuned such that the validation accuracy would be maximized.
 
+# Results 
+
 ## Perceptrons and Neural Networks
 
 Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
@@ -27,8 +29,12 @@ Identifies and categorizes different 'types' of sounds in the music
 
 #### Architecture
 
+![Marsyas Architecture](https://github.com/shanyusuen/genreClassification/blob/master/res/marsyas_diagram.png?raw=true)
+
 
 #### Confusion Matrix
+
+![Marsyas Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/Marsyas_Confusion.png)
 
 
 ## Convolutional Neural Networks
@@ -44,14 +50,16 @@ Images of rhythm pattern spectrograms
 
 #### Architecture
 
+![Rhythm Pattern Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/temporaldataarchitecture_diagram.png)
+
+
 #### Confusion Matrix
 
+![Rhythm Pattern Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Confusion.png)
 
-
-
-# Results
 
 The models and architectures used for the extra features seen here can be found in Appendix B.
+
 
 | Network Type                 | Feature Set                  | Accuracy(%) | Loss |
 |------------------------------|------------------------------|-------------|------|
@@ -61,6 +69,9 @@ The models and architectures used for the extra features seen here can be found 
 | Convolutional Neural Network | Rhythm Patterns              | 31          | 3.8  |
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
+
+
+# Conclusion
 
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
@@ -104,23 +115,27 @@ Creates bins of generally how high and low energy the rhythms are.
 Images from website
 
 ### Architecture
-
+![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
 
 ## Statistical Spectrum Descriptor
 
-#### Architecture
+Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
+
+### Architecture
+
+![Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/SSD_Architecture.png)
+
+## Temporal Statistical Spectrum Descriptor
 
 
-
-### Temporal Statistical Spectrum Descriptor
-
-Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 24x7x7 array of features.
 Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
-#### Architecture
+### Architecture
 
+![Temporal Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/TSSD_Architecture.png)
    
   
+## Other Feature Sets
 JMIR: jAudio package for MIR (music information retrieval)
 An audio processing library equipped to extract a large variety of information from music files.   
 JMIR low level spectral features
