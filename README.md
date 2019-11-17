@@ -1,4 +1,3 @@
-# :musical_note::notes::notes::notes::musical_note:
 # Purpose
 
 The purpose of this project was to create classifiers to categorize songs by their respective genres. Manually categorizing songs by genre can be a time-intensive and subjective process especially with the frequent invention of new genres. Machine Learning appears to be applicable for genre assignment as it is merely a classification problem, where each category is already known. Automated genre assignment is a popular and broadly applied technology in most popular music collections such as Spotify and Apple Music.
