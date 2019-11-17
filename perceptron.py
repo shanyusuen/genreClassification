@@ -11,7 +11,7 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electroni
 
 
 batch_size = 256
-epochs = 10
+epochs = 100
 
 
 
@@ -23,6 +23,8 @@ train_data = dataRead.load_data(train_file)
 #last dimension is label
 num_dimensions = test_data.shape[1] - 1
 num_classes = len(classes)
+
+print("Dimensionality of data: ", num_dimensions)
 
 transform = lambda x: classes.index(x)
 
@@ -39,7 +41,8 @@ y_test = keras.utils.to_categorical([transform(x) for x in y_test], num_classes)
 model = Sequential()
 model.add(Dense(num_dimensions, input_dim=num_dimensions, activation='relu'))
 model.add(Dense(45, activation='relu'))
-model.add(Dense(45, activation='relu'))
+model.add(Dense(20, activation='relu'))
+model.add(Dense(20, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
 
 model.compile(loss=keras.losses.categorical_crossentropy,

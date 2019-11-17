@@ -30,7 +30,17 @@ def remove_spaces_from_labels(file):
         lines.append(line.replace('New Age', 'New_Age'))
     open(file, 'w').write(''.join(lines))
 
-remove_spaces_from_labels('labelsTopMAGD')
+def remove_trailing_commas(file):
+    old = open(file, 'r')
+    lines = []
+    for line in old:
+        line = line.rstrip(',\n')
+        line += '\n'
+        lines.append(line)
+    open(file, 'w').write(''.join(lines))
+
+#remove_spaces_from_labels('labelsTopMAGD')
+#remove_trailing_commas('msd-rh.arff')
 
 """
 if __name__ == "__main__":

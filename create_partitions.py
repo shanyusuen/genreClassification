@@ -77,7 +77,7 @@ if __name__ == '__main__':
             split_mapping[tmp[0]] = tmp[1]
         except:
             print("failed to add: ", tmp)
-            print("continuing")
+            print("continuing...")
 
 
     split_file.close()
