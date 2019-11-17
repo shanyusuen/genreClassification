@@ -120,7 +120,7 @@ If the resulting partition of features has a trailing comma one can deal with th
 
 #### Confusion Matrix
 
-![JMIR Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
+![JMIR Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc_confusion.png)
 
 
 ## Rhythm Histogram
@@ -130,7 +130,8 @@ If the resulting partition of features has a trailing comma one can deal with th
 * Images from website
 
 ### Architecture
-![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/jmircfcc_confusion.png)
+![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
+
 
 ## Statistical Spectrum Descriptor
 
@@ -153,7 +154,7 @@ If the resulting partition of features has a trailing comma one can deal with th
 # References
 
 1. https://dl.acm.org/citation.cfm?id=860487
-2. https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
+2.https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
 3. http://www.ifs.tuwien.ac.at/mir/msd/
 
 
