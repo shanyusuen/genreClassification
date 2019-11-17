@@ -50,7 +50,7 @@ Images of rhythm pattern spectrograms
 
 #### Architecture
 
-![Rhythm Pattern Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Architecture.png)
+![Rhythm Pattern Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/temporaldataarchitecture_diagram.png)
 
 
 #### Confusion Matrix
