@@ -62,6 +62,7 @@ The models and architectures used for the extra features seen here can be found 
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
 
+
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
 One reason that the Marsyas features were able to classify music genre so well is that the features are composed of heavily processed information extracted from the songs. Marsyas (Music Analysis, Retrieval and SYnthesis for Audio Signals) is an audio processing library that focuses on extracting information from various signal sources and focusing on music. It is unclear how exactly the Vienna University of Technology used the library to extract information as the link is dead, but, given the above results, it seems that the Marsyas features are heavily correlated with the genre of the song and there is only minimal extra analysis needed to extract that correlation.
@@ -104,22 +105,21 @@ Creates bins of generally how high and low energy the rhythms are.
 Images from website
 
 ### Architecture
-
+![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
 
 ## Statistical Spectrum Descriptor
 
-#### Architecture
+### Architecture
 
+![Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/SSD_Architecture.png)
 
-
-### Temporal Statistical Spectrum Descriptor
+## Temporal Statistical Spectrum Descriptor
 
 Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 24x7x7 array of features.
 Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
-#### Architecture
+### Architecture
 
-   
   
 JMIR: jAudio package for MIR (music information retrieval)
 An audio processing library equipped to extract a large variety of information from music files.   
