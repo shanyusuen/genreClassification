@@ -86,13 +86,14 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 We attached labels to data and then split them into test and data files using create_partitions.py
 
 For example:
-
+```
 create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
+```
 
--f denotes the .arff file containing data features
--l denotes the file mapping the data entries to the correct labels
--s denotes whether a data entry will fall into testing or training data
--o is the directory where the result will be stored
+`-f` denotes the .arff file containing data features
+`-l` denotes the file mapping the data entries to the correct labels
+`-s` denotes whether a data entry will fall into testing or training data
+`-o` is the directory where the result will be stored
 
 all of these files can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
 
@@ -100,7 +101,7 @@ After this, we ran the corresponding models python file to train a classifier an
 
 It is possible to run into different problems due to different .arff feature files being formatted differently - data entries should not have trailing commas, and genre labels should be one word or in quotes.
 
-dataRead.py contains a script to remove spaces from genres
+`dataRead.py` contains a script to remove spaces from genres
 
 If the resulting partition of features has a trailing comma one can deal with this problem by changing the -1 indexes in the customRead.py file to -2.
 
