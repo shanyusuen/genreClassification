@@ -2,12 +2,13 @@
 
 The purpose of this project was to create classifiers to categorize songs by their respective genres. Manually categorizing songs by genre can be a time-intensive and subjective process especially with the frequent invention of new genres. Machine Learning appears to be applicable for genre assignment as it is merely a classification problem, where each category is already known. Automated genre assignment is a popular and broadly applied technology in most popular music collections such as Spotify and Apple Music.
 
-Prior research in the realm of musical genre classification focused on content-based approaches, with an early comparative study published in 2003 indicating that the modern Daubechies Wavelet Coefficient Histograms (DWCH) method of feature extraction yielded significantly more accurate results than other existing methods [1]. Later studies used a neural network to categorize songs into predefined genre categories as we have done. These often rely on tempo, volume, and other features [2]. This project embodies many of the conditions of the latter study to build upon.
+Prior research in the realm of musical genre classification focused on content-based approaches, with an early comparative study published in 2003 indicating that the modern Daubechies Wavelet Coefficient Histograms (DWCH) method of feature extraction yielded significantly more accurate results than other existing methods [1]. Later studies used a neural network to categorize songs into predefined genre categories as we have done. These often rely on tempo, volume, and other features [2]. This project embodies many of the conditions of the latter study to build on.
 
 
 # [Million Song Dataset](http://millionsongdataset.com/)
 
-The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs. The specific dataset we used from the Million Song Dataset was the Top-MAGD Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. Most importantly, we used the split files that split the dataset into a training set of 2,000 songs from each genre and a testing set that was the rest of the songs. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as that genre due to the data imbalance, so we chose a stratified split that would ensure the training data had an equal number of every song.
+The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs.   
+The specific dataset we used from the Million Song Dataset was the [Top-MAGD] Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. Most importantly, we used the split files that split the dataset into a training set of 2,000 songs from each genre and a testing set that was the rest of the songs. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as that genre due to the data imbalance, so we chose a stratified split that would ensure the training data had an equal number of every song.
 
 The 13 genre labels are Blues, Country, Electronic, Folk, International, Jazz, Latin, New Age, Pop Rock, Rap, Reggae, RnB, and Vocal.
     
@@ -17,6 +18,8 @@ All of the models were created in Python 3.7 using the library Keras with the Te
 
 For each model below, hyperparameters were tuned manually until the model was seen to be overfitting the data. Specific parameters included the number of epochs, layer and kernel sizes, and number of layers. In general, hyperparameters were tuned such that the validation accuracy would be maximized.
 
+# Results
+
 ## Perceptrons and Neural Networks
 
 Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
@@ -24,8 +27,8 @@ Basic neural network models were used on the Marsyas and Rhythm Histogram featur
 
 ### Marsyas 
 
-Identifies and categorizes different 'types' of sounds in the music
-Uses the Marsyas library to analyze mp3 files
+* Identifies and categorizes different 'types' of sounds in the music
+* Uses the Marsyas library to analyze mp3 files
 
 #### Architecture
 
@@ -45,9 +48,8 @@ In addition, many of these datasets included a temporal dimension that could be 
 
 ### Rhythm Pattern 
 
-Describes sound modulation across 24 frequency bands.
-
-![Images of rhythm pattern spectrograms](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/rythmpatterns_comparison.PNG)
+* Describes sound modulation across 24 frequency bands.
+* Images of rhythm pattern spectrograms
 
 #### Architecture
 
@@ -58,21 +60,20 @@ Describes sound modulation across 24 frequency bands.
 The true label is on the y axis and the predicted label is on the x axis.
 ![Rhythm Pattern Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Confusion.png)
 
-
-# Results
-
 The models and architectures used for the extra features seen here can be found in Appendix B.
 
 
 | Network Type                 | Feature Set                  | Accuracy(%) | Loss |
 |------------------------------|------------------------------|-------------|------|
-| Neural Network               | JMIR Low Level Spectral Data | 63.7        | 1.23 |
+| Neural Network               | JMIR Low Level Spectral Data |             |      |
 |                              | Rhythm Histograms            | 32.1        | 2.24 |
-|                              | Marsyas Timbral Data         | 70.1        | 0.96 |
+|                              | Marsyas Timbral Data         | 70.1        | 0.963 |
 | Convolutional Neural Network | Rhythm Patterns              | 31          | 3.8  |
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
 
+
+# Conclusion
 
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
@@ -90,7 +91,7 @@ We attached labels to data and then split them into test and data files using `c
 
 For example:
 
-```python
+```python3
 python3 create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
 ```
 
@@ -111,18 +112,29 @@ If the resulting partition of features has a trailing comma one can deal with th
 
 #  Appendix B - Additional Feature Sets
 
+## JMIR Low Level Spectral Data
+
+* JMIR: jAudio package for MIR (music information retrieval), equipped to extract a large variety of information from music files. 
+* (Spectral Centroid, Spectral Rolloff Point, Spectral Flux, Compactness, Spectral Variability, Root Mean Square, Zero Crossings, and Fraction of Low Energy Windows)
+* Describes standard statistic data from sound spectrograms
+
+#### Confusion Matrix
+
+![JMIR Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
+
+
 ## Rhythm Histogram
 
-Magnitudes of modulation frequency are summed over all 24 frequency bands, creating bins of the total amount of modulation at different energy levels.
-Creates bins of generally how high and low energy the rhythms are.
-Images from website
+* Magnitudes of modulation frequency are summed over all 24 frequency bands, creating bins of the total amount of modulation at different energy levels.
+* Creates bins of generally how high and low energy the rhythms are.
+* Images from website
 
 ### Architecture
-![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
+![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/jmircfcc_confusion.png)
 
 ## Statistical Spectrum Descriptor
 
-Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
+* Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
 
 
 ### Architecture
@@ -131,25 +143,17 @@ Spectrograms are created with the same method of Rhythm patterns, but covering d
 
 ## Temporal Statistical Spectrum Descriptor
 
-Describes changes in rhythm over time using statistical measures of multiple spectrograms.
+* Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
 ### Architecture
 
 ![Temporal Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/TSSD_Architecture.png)
    
-  
-## Other Feature Sets
-JMIR: jAudio package for MIR (music information retrieval)
-An audio processing library equipped to extract a large variety of information from music files.   
-JMIR low level spectral features
-(Spectral Centroid, Spectral Rolloff Point, Spectral Flux, Compactness, Spectral Variability, Root Mean Square, Zero Crossings, and Fraction of Low Energy Windows)
-Describes standard statistic data from sound spectrograms
-JMIR MFCC features
-MFCC: Mel Frequency Cepstral Coefficient
-Cryptographic process used to isolate human voice data
-
+   
 # References
 
 1. https://dl.acm.org/citation.cfm?id=860487
 2. https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
 3. http://www.ifs.tuwien.ac.at/mir/msd/
+
+
