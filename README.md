@@ -117,13 +117,15 @@ Images from website
 
 ## Statistical Spectrum Descriptor
 
+Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
+
 ### Architecture
 
 ![Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/SSD_Architecture.png)
 
 ## Temporal Statistical Spectrum Descriptor
 
-Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
+
 Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
 ### Architecture
