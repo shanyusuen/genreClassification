@@ -25,53 +25,46 @@ In common among all of the models was the output layer and loss function. The ou
 
 For each model below, hyperparameters were tuned manually until the model was seen to be overfitting the data. Specific parameters included the number of epochs, layer and kernel sizes, and number of layers. In general, hyperparameters were tuned such that the validation accuracy would be maximized.
 
-### Perceptrons and Neural Networks
+## Perceptrons and Neural Networks
 
 Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
 
-#### Rhythm Histogram
 
-Magnitudes of modulation frequency are summed over all 24 frequency bands, creating bins of the total amount of modulation at different energy levels.
-Creates bins of generally how high and low energy the rhythms are.
-Images from website
-
-## Architecture
-
-
-
-#### Marsyas 
+### Marsyas 
 
 Identifies and categorizes different 'types' of sounds in the music
 
-## Architecture
+#### Architecture
 
 
-### Convolutional Neural Networks
+## Convolutional Neural Networks
 
 A convolutional neural network was used for all of the other feature sets for the main reason of extracting relevant features while minimizing computational power. For example, the Rhythm Pattern feature set had a total of 1,440 features for each song. A neural network would need many thousands of nodes to make sense of these features meaning millions of weights which would be infeasible to train given our memory and computational constraints. Using a number of convolutional layers, the feature space was shrunk enough to allow for a reasonably sized neural network to analyze the resulting features.
 
 In addition, many of these datasets included a temporal dimension that could be simplified using a kernel. Convolutional layers are known to be useful when analyzing data across a temporal dimension and we took advantage of that when presented with features spread across a temporal dimension.
 
-#### Rhythm Pattern 
+### Rhythm Pattern 
 
 Describes sound modulation across 24 frequency bands.
 Images of rhythm pattern spectrograms
 
-## Architecture
+#### Architecture
 
 
-#### Statistical Spectrum Descriptor
-
-
-
-## Architecture
+### Statistical Spectrum Descriptor
 
 
 
-#### Temporal Statistical Spectrum Descriptor
+#### Architecture
+
+
+
+### Temporal Statistical Spectrum Descriptor
 
 Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 24x7x7 array of features.
 Describes changes in rhythm over time using statistical measures of multiple spectrograms.
+
+#### Architecture
 
    
   
@@ -113,3 +106,40 @@ One reason that the Marsyas features were able to classify music genre so well i
 ## Future Work
 
 The Marsyas featureset worked quite well for classifying music but lacks in its ability to classify folk music. A future project could involve using an ensemble classifier that took advantage of the Marsyas feature sets overall ability to classify music along with the Rhythm Pattern model’s ability to classify folk music to create a better overall classifier.
+
+
+
+## Appendix A
+
+## Using the Classifier
+
+We attached labels to data and then split them into test and data files using create_partitions.py
+
+For example:
+
+create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
+
+-f denotes the .arff file containing data features
+-l denotes the file mapping the data entries to the correct labels
+-s denotes whether a data entry will fall into testing or training data
+-o is the directory where the result will be stored
+
+all of these files can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
+
+After this, we run perceptron.py to train a classifier and test.
+
+It is possible to run into different problems due to different .arff feature files being formatted differently - data entries should not have trailing commas, and genre labels should be one word or in quotes
+
+dataRead.py contains a script to remove spaces from genres
+
+# Appendix B - Additional Feature Sets
+
+ -JMIR: jAudio package for MIR (music information retrieval)
+ 	-An audio processing library equipped to extract a large variety of information from music files.   
+-JMIR low level spectral features
+       -(Spectral Centroid, Spectral Rolloff Point, Spectral Flux, Compactness, Spectral Variability, Root Mean Square, Zero Crossings, and Fraction of Low Energy Windows)
+       -Describes standard statistic data from sound spectrograms
+ -JMIR MFCC features
+ 	-MFCC: Mel Frequency Cepstral Coefficient
+	-Cryptographic process used to isolate human voice data
+
