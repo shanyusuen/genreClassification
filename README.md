@@ -16,6 +16,8 @@ All of the models were created in Python3.7 using the library Keras with the Ten
 
 For each model below, hyperparameters were tuned manually until the model was seen to be overfitting the data. Specific parameters included the number of epochs, layer and kernel sizes, and number of layers. In general, hyperparameters were tuned such that the validation accuracy would be maximized.
 
+# Results 
+
 ## Perceptrons and Neural Networks
 
 Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
@@ -56,8 +58,6 @@ Images of rhythm pattern spectrograms
 ![Rhythm Pattern Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Confusion.png)
 
 
-# Results
-
 The models and architectures used for the extra features seen here can be found in Appendix B.
 
 
@@ -70,6 +70,8 @@ The models and architectures used for the extra features seen here can be found 
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
 
+
+# Conclusion
 
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
@@ -86,14 +88,13 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 We attached labels to data and then split them into test and data files using create_partitions.py
 
 For example:
-```
-create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
-```
 
-`-f` denotes the .arff file containing data features
-`-l` denotes the file mapping the data entries to the correct labels
-`-s` denotes whether a data entry will fall into testing or training data
-`-o` is the directory where the result will be stored
+create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
+
+-f denotes the .arff file containing data features
+-l denotes the file mapping the data entries to the correct labels
+-s denotes whether a data entry will fall into testing or training data
+-o is the directory where the result will be stored
 
 all of these files can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
 
@@ -101,7 +102,7 @@ After this, we ran the corresponding models python file to train a classifier an
 
 It is possible to run into different problems due to different .arff feature files being formatted differently - data entries should not have trailing commas, and genre labels should be one word or in quotes.
 
-`dataRead.py` contains a script to remove spaces from genres
+dataRead.py contains a script to remove spaces from genres
 
 If the resulting partition of features has a trailing comma one can deal with this problem by changing the -1 indexes in the customRead.py file to -2.
 
