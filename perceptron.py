@@ -11,10 +11,10 @@ classes = ["Pop_Rock", "New_Age", "Jazz", "RnB",  "Country", "Reggae", "Electron
 
 
 import random
-random.shuffle(classes)
+#random.shuffle(classes)
 
 batch_size = 256
-epochs = 100
+epochs = 50
 
 
 
