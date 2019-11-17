@@ -27,8 +27,12 @@ Identifies and categorizes different 'types' of sounds in the music
 
 #### Architecture
 
+![Marsyas Architecture](https://github.com/shanyusuen/genreClassification/blob/master/res/marsyas_diagram.png?raw=true)
+
 
 #### Confusion Matrix
+
+![Marsyas Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/Marsyas_Confusion.png)
 
 
 ## Convolutional Neural Networks
@@ -44,14 +48,18 @@ Images of rhythm pattern spectrograms
 
 #### Architecture
 
+![Rhythm Pattern Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Architecture.png)
+
+
 #### Confusion Matrix
 
-
+![Rhythm Pattern Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RP_Confusion.png)
 
 
 # Results
 
 The models and architectures used for the extra features seen here can be found in Appendix B.
+
 
 | Network Type                 | Feature Set                  | Accuracy(%) | Loss |
 |------------------------------|------------------------------|-------------|------|
@@ -115,12 +123,15 @@ Images from website
 
 ## Temporal Statistical Spectrum Descriptor
 
-Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 24x7x7 array of features.
+Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
 Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
 ### Architecture
 
+![Temporal Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/TSSD_Architecture.png)
+   
   
+## Other Feature Sets
 JMIR: jAudio package for MIR (music information retrieval)
 An audio processing library equipped to extract a large variety of information from music files.   
 JMIR low level spectral features
