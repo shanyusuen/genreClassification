@@ -53,40 +53,14 @@ Images of rhythm pattern spectrograms
 
 The models and architectures used for the extra features seen here can be found in Appendix B.
 
-Network Type
-
-Feature Set
-Metrics
-Accuracy (%)
-Loss
-
-
-Neural Network
-JMIR Low Level Spectral Data
-
-
-
-
-Rhythm Histograms
-32.1
-2.24
-Marsyas Timbral Data
-70.1
-0.963
-
-Convolutional Neural Network
-Rhythm Patterns
-31
-3.8
-Statistical Spectrum Data
-46
-1.8
-Temporal SSD
-46
-1.8
-
-
-
+| Network Type   | Feature Set                  | Accuracy(%) | Loss |
+|----------------|------------------------------|-------------|------|
+| Neural Network | JMIR Low Level Spectral Data |             |      |
+|                | Rhythm Histograms            |             |      |
+|                | Marsyas Timbral Data         |             |      |
+|                | Rhythm Patterns              |             |      |
+|                | Statistical Spectrum Data    |             |      |
+|                | Temporal SSD                 |             |      |
 
 Given the above results, it is clear that the Marsyas Timbral data are the best features to use when classifying music genres. Many of the models would fit the training data well but struggle to achieve high accuracy across all genres with the validation data. Only the Marsyas features were able to sufficiently split the feature space into genre categories such that the boundaries worked well in both the training and validation phases. It appears that the other feature sets were not able to sufficiently partition the feature space or lacked the necessary information to discriminate between various genres.
 
