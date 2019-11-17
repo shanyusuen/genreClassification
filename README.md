@@ -111,7 +111,7 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 
 ## Appendix A
 
-## Using the Classifier
+### Using the Classifier
 
 We attached labels to data and then split them into test and data files using create_partitions.py
 
@@ -132,7 +132,7 @@ It is possible to run into different problems due to different .arff feature fil
 
 dataRead.py contains a script to remove spaces from genres
 
-# Appendix B - Additional Feature Sets
+## Appendix B - Additional Feature Sets
 
  -JMIR: jAudio package for MIR (music information retrieval)
  	-An audio processing library equipped to extract a large variety of information from music files.   
