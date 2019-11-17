@@ -2,11 +2,12 @@
 
 The purpose of this project was to create classifiers to categorize songs by their respective genres. Manually categorizing songs by genre can be a time-intensive and subjective process especially with the frequent invention of new genres. Machine Learning appears to be applicable for genre assignment as it is merely a classification problem, where each category is already known. Automated genre assignment is a popular and broadly applied technology in most popular music collections such as Spotify and Apple Music.
 
+Prior research in the realm of musical genre classification focused on content-based approaches, with an early comparative study published in 2003 indicating that the modern Daubechies Wavelet Coefficient Histograms (DWCH) method of feature extraction yielded significantly more accurate results than other existing methods [1]. Later studies used a neural network to categorize songs into predefined genre categories as we have done. These often rely on tempo, volume, and other features [2]. This project embodies many of the conditions of the latter study to build upon.
+
 
 # [Million Song Dataset](http://millionsongdataset.com/)
 
-The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs.   
-The specific dataset we used from the Million Song Dataset was the Top-MAGD Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. Most importantly, we used the split files that split the dataset into a training set of 2,000 songs from each genre and a testing set that was the rest of the songs. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as that genre due to the data imbalance, so we chose a stratified split that would ensure the training data had an equal number of every song.
+The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs. The specific dataset we used from the Million Song Dataset was the Top-MAGD Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. Most importantly, we used the split files that split the dataset into a training set of 2,000 songs from each genre and a testing set that was the rest of the songs. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as that genre due to the data imbalance, so we chose a stratified split that would ensure the training data had an equal number of every song.
 
 The 13 genre labels are Blues, Country, Electronic, Folk, International, Jazz, Latin, New Age, Pop Rock, Rap, Reggae, RnB, and Vocal.
     
@@ -66,7 +67,6 @@ The models and architectures used for the extra features seen here can be found 
 | Network Type                 | Feature Set                  | Accuracy(%) | Loss |
 |------------------------------|------------------------------|-------------|------|
 | Neural Network               | JMIR Low Level Spectral Data |             |      |
-|                              | JMIR CFCC Data               | 67          | .99  |
 |                              | Rhythm Histograms            | 32.1        | 2.24 |
 |                              | Marsyas Timbral Data         | 70.1        | .963 |
 | Convolutional Neural Network | Rhythm Patterns              | 31          | 3.8  |
@@ -147,3 +147,9 @@ Describes standard statistic data from sound spectrograms
 JMIR MFCC features
 MFCC: Mel Frequency Cepstral Coefficient
 Cryptographic process used to isolate human voice data
+
+# References
+
+1. https://dl.acm.org/citation.cfm?id=860487
+2.https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
+3. http://www.ifs.tuwien.ac.at/mir/msd/
