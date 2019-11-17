@@ -154,7 +154,7 @@ If the resulting partition of features has a trailing comma one can deal with th
 # References
 
 1. https://dl.acm.org/citation.cfm?id=860487
-2.https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
+2. https://pdfs.semanticscholar.org/1314/aee7880cb2bc9fc20fba12264545caa45018.pdf. 
 3. http://www.ifs.tuwien.ac.at/mir/msd/
 
 
