@@ -7,8 +7,11 @@ import data_plotting
 
 test_file = ".\\out\\test.arff"
 train_file = ".\\out\\train.arff"
-classes = ["Pop_Rock", "New_Age", "Jazz", "RnB", "Country", "Reggae", "Electronic", "Folk", "Rap", "Vocal", "Latin", "Blues", "International"]
+classes = ["Pop_Rock", "New_Age", "Jazz", "RnB",  "Country", "Reggae", "Electronic", "Folk", "Rap", "Vocal", "Latin", "Blues", "International"]
 
+
+import random
+random.shuffle(classes)
 
 batch_size = 256
 epochs = 100
