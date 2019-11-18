@@ -135,7 +135,7 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 
 * Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
-![Temporal SSD Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//TSSD_Confusion.png)
+![Temporal SSD Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/TSSD_Confusion.png)
 
 ### Architecture
 
