@@ -92,11 +92,12 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 * (Spectral Centroid, Spectral Rolloff Point, Spectral Flux, Compactness, Spectral Variability, Root Mean Square, Zero Crossings, and Fraction of Low Energy Windows)
 * Describes standard statistic data from sound spectrograms
 
-#### Confusion Matrix
+#### Low Level Features Result
 
 ![JMIR Confusion low level](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmirlowlevel_confusion.png)
 
-![JMIR Confusion MFCC](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc.png)
+#### MFCC Voice Data Result
+![JMIR Confusion MFCC](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc_confusion.png)
 
 
 ## Rhythm Histogram
