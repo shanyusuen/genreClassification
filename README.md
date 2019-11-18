@@ -103,7 +103,10 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 
 * Magnitudes of modulation frequency are summed over all 24 frequency bands, creating bins of the total amount of modulation at different energy levels.
 * Creates bins of generally how high and low energy the rhythms are.
-* Images from website
+
+
+![Histograms](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//rythmhistograms.png)
+
 
 ![RH Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//RH_Confusion.png)
 
