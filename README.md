@@ -97,7 +97,7 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 ![JMIR Confusion low level](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmirlowlevel_confusion.png)
 
 #### MFCC Voice Data Result
-![JMIR Confusion MFCC](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc_confusion.png)
+![JMIR Confusion MFCC](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/jmircfcc_confusion.png)
 
 
 ## Rhythm Histogram
