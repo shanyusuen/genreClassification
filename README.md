@@ -106,7 +106,7 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 * Creates bins of generally how high and low energy the rhythms are.
 
 
-![Histograms](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//rytmhistograms.png)
+![Histograms](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/ryhtmhistograms.png)
 
 
 ![RH Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//RH_Confusion.png)
