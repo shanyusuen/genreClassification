@@ -84,33 +84,7 @@ One reason that the Marsyas features were able to classify music genre so well i
 The Marsyas featureset worked quite well for classifying music but lacks in its ability to classify folk music. A future project could involve feature engineering a comination dataset to take advantage of the Marsyas feature sets overall ability to classify music along with the Rhythm Pattern model’s ability to classify folk music to create a better overall classifier. Also, ensemble learning methods could be applied to reduce variance in the testing accuracy.
 
 
-
-# Appendix A - Using the Classifier
-
-We attached labels to data and then split them into test and data files using `create_partitions.py`
-
-For example:
-
-```python3
-python3 create_partitions.py -o out -f MSD_JMIR_SPECTRAL_ALL_All.arff -l labelsTopMAGD -s splitsTopMAGD
-```
-
-`-f` denotes the .arff file containing data features
-`-l` denotes the file mapping the data entries to the correct labels
-`-s` denotes whether a data entry will fall into testing or training data
-`-o` is the directory where the result will be stored
-
-all of these files can be downloaded from http://www.ifs.tuwien.ac.at/mir/msd/download.html
-
-After this, we ran the corresponding models’ python file to train a classifier and test.
-
-It is possible to run into different problems due to different .arff feature files being formatted differently - data entries should not have trailing commas, and genre labels should be one word or in quotes.
-
-`dataRead.py` contains a script to remove spaces from genres
-
-If the resulting partition of features has a trailing comma one can deal with this problem by changing the -1 indexes in the `customRead.py` file to -2.
-
-#  Appendix B - Additional Feature Sets
+#  Appendix - Additional Feature Sets
 
 ## JMIR Low Level Spectral Data
 
@@ -120,7 +94,9 @@ If the resulting partition of features has a trailing comma one can deal with th
 
 #### Confusion Matrix
 
-![JMIR Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc_confusion.png)
+![JMIR Confusion low level](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmirlowlevel_confusion.png)
+
+![JMIR Confusion MFCC](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//jmircfcc.png)
 
 
 ## Rhythm Histogram
