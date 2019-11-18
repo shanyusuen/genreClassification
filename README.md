@@ -1,6 +1,6 @@
 # Purpose
 
-The purpose of this project was to create classifiers to categorize songs by their respective genres. Manually categorizing songs by genre can be a time-intensive and subjective process especially with the frequent invention of new genres. Machine Learning appears to be applicable for genre assignment as it is merely a classification problem, where each category is already known. Automated genre assignment is a popular and broadly applied technology in most popular music collections such as Spotify and Apple Music.
+The purpose of this project was to create classifiers to categorize songs by their respective genres. Manually categorizing songs by genre can be a time-intensive and subjective process. Machine Learning appears to be applicable for genre assignment as it is a classification problem, where each category is already known. Automated genre assignment is a popular and broadly applied technology in most popular music collections such as Spotify and Apple Music.
 
 Prior research in the realm of musical genre classification focused on content-based approaches, with an early comparative study published in 2003 indicating that the modern Daubechies Wavelet Coefficient Histograms (DWCH) method of feature extraction yielded significantly more accurate results than other existing methods [1]. Later studies used a neural network to categorize songs into predefined genre categories as we have done. These often rely on tempo, volume, and other features [2]. This project embodies many of the conditions of the latter study to build on.
 
@@ -8,7 +8,7 @@ Prior research in the realm of musical genre classification focused on content-b
 # [Million Song Dataset](http://millionsongdataset.com/)
 
 The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs.   
-The specific dataset we used from the Million Song Dataset was the [Top-MAGD] Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. Most importantly, we used the split files that split the dataset into a training set of 2,000 songs from each genre and a testing set that was the rest of the songs. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as that genre due to the data imbalance, so we chose a stratified split that would ensure the training data had an equal number of every song.
+The specific dataset we used from the Million Song Dataset was the [Top-MAGD] Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as pop or rock due to the data imbalance, so we chose a stratified split, with equal entries from all genres, that would ensure the training data had an equal number of every song.
 
 The 13 genre labels are Blues, Country, Electronic, Folk, International, Jazz, Latin, New Age, Pop Rock, Rap, Reggae, RnB, and Vocal.
     
@@ -22,7 +22,7 @@ For each model below, hyperparameters were tuned manually until the model was se
 
 ## Perceptrons and Neural Networks
 
-Basic neural network models were used on the Marsyas and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
+Neural network models were used on the Marsyas, JMIR, and Rhythm Histogram feature sets. Neither of these feature sets had a time component nor had an extremely large number of features. Therefore, it was decided that a simple neural network would suffice to classify songs using these features.
 
 
 ### Marsyas 
@@ -42,14 +42,13 @@ The true label is on the y axis and the predicted label is on the x axis.
 
 ## Convolutional Neural Networks
 
-A convolutional neural network was used for all of the other feature sets for the main reason of extracting relevant features while minimizing computational power. For example, the Rhythm Pattern feature set had a total of 1,440 features for each song. A neural network would need many thousands of nodes to make sense of these features meaning millions of weights which would be infeasible to train given our memory and computational constraints. Using a number of convolutional layers, the feature space was shrunk enough to allow for a reasonably sized neural network to analyze the resulting features.
+The Rhythm Pattern feature set had a total of 1,440 features for each song. A convolutional neural network was used for the rhythm patterns feature set, as a means of of extracting relevant patterns from the massive two dimensional array of features. Using a number of convolutional layers, the feature space was shrunk enough to allow for a reasonably sized neural network to analyze the resulting features.
 
 In addition, many of these datasets included a temporal dimension that could be simplified using a kernel. Convolutional layers are known to be useful when analyzing data across a temporal dimension and we took advantage of that when presented with features spread across a temporal dimension.
 
 ### Rhythm Pattern 
 
 * Describes sound modulation across 24 frequency bands.
-* Images of rhythm pattern spectrograms
 
 #### Architecture
 
