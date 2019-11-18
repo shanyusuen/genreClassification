@@ -64,9 +64,10 @@ The models and architectures used for the extra features seen here can be found 
 
 | Network Type                 | Feature Set                  | Accuracy(%) | Loss |
 |------------------------------|------------------------------|-------------|------|
-| Neural Network               | JMIR Low Level Spectral Data |             |      |
+| Neural Network               | JMIR Low Level Spectral Data | 63.5        | 1.25 |
+|                              | JMIR MFCC voice data         | 67          | 1.05 |
 |                              | Rhythm Histograms            | 32.1        | 2.24 |
-|                              | Marsyas Timbral Data         | 70.1        | 0.963 |
+|                              | Marsyas Timbral Data         | 70.1        | 0.96|
 | Convolutional Neural Network | Rhythm Patterns              | 31          | 3.8  |
 |                              | Statistical Spectrum Data    | 46          | 1.8  |
 |                              | Temporal SSD                 | 46          | 1.8  |
