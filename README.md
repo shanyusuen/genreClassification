@@ -81,7 +81,7 @@ One reason that the Marsyas features were able to classify music genre so well i
 
 # Future Work
 
-The Marsyas featureset worked quite well for classifying music but lacks in its ability to classify folk music. A future project could involve using an ensemble classifier that took advantage of the Marsyas feature sets overall ability to classify music along with the Rhythm Pattern model’s ability to classify folk music to create a better overall classifier.
+The Marsyas featureset worked quite well for classifying music but lacks in its ability to classify folk music. A future project could involve feature engineering a comination dataset to take advantage of the Marsyas feature sets overall ability to classify music along with the Rhythm Pattern model’s ability to classify folk music to create a better overall classifier. Also, ensemble learning methods could be applied to reduce variance in the testing accuracy.
 
 
 
