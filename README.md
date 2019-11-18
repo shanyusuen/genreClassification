@@ -8,7 +8,7 @@ Prior research in the realm of musical genre classification focused on content-b
 # [Million Song Dataset](http://millionsongdataset.com/)
 
 The Million Song Dataset is a collection of songs tagged with various labels, including genres, along with datasets of features extracted from the MP3 files of those songs.   
-The specific dataset we used from the Million Song Dataset was the [Top-MAGD](http://www.ifs.tuwien.ac.at/mir/msd/) Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as pop or rock due to the data imbalance, so we chose a stratified split, with equal entries from all genres, that would ensure the training data had an equal number of every song.
+The specific dataset we used from the Million Song Dataset was the [Top-MAGD] Million Song Dataset Benchmarks. From this dataset, we used the partition mapping files to split the feature set into testing and training data, the label assignment file, and various feature files that will be detailed in the next section. The original dataset consisted of roughly 350,000 songs but more than 200,000 of them were all from the ‘Pop_Rock’ category. This had a strong chance of leading any of our models to classify all songs as pop or rock due to the data imbalance, so we chose a stratified split, with equal entries from all genres, that would ensure the training data had an equal number of every song.
 
 The 13 genre labels are Blues, Country, Electronic, Folk, International, Jazz, Latin, New Age, Pop Rock, Rap, Reggae, RnB, and Vocal.
     
@@ -105,8 +105,13 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 * Creates bins of generally how high and low energy the rhythms are.
 * Images from website
 
+![RH Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//RH_Confusion.png)
+
 ### Architecture
 ![Rhythm Histogram Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/RH_Architecture.png)
+
+
+
 
 
 ## Statistical Spectrum Descriptor
@@ -114,17 +119,25 @@ The Marsyas featureset worked quite well for classifying music but lacks in its 
 * Spectrograms are created with the same method of Rhythm patterns, but covering different time sections throughout the song. Statistical measures are collected over each time step and compiled into a 7x7x24 array of features.
 
 
+![SSD Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//SSD_Confusion.png)
+
 ### Architecture
 
 ![Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/SSD_Architecture.png)
+
+
 
 ## Temporal Statistical Spectrum Descriptor
 
 * Describes changes in rhythm over time using statistical measures of multiple spectrograms.
 
+![Temporal SSD Confusion](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res//TSSD_Confusion.png)
+
 ### Architecture
 
 ![Temporal Statistical Spectrum Descriptor Architecture](https://raw.githubusercontent.com/shanyusuen/genreClassification/master/res/TSSD_Architecture.png)
+
+
    
    
 # References
